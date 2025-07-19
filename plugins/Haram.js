@@ -1,6 +1,6 @@
-import fetch from 'node-fetch';
+⁸limport fetch from 'node-fetch';
 
-const API_KEY = '9746da2c-ac5f-487c-b4ae-fc55d1cd58b3'; // 🔐 Inserisci la tua chiave personale qui
+const API_KEY = '9746da2c-ac5f-487c-b4ae-fc55d1cd58b3';
 
 const packPrices = {
   base: 100,
@@ -102,7 +102,6 @@ let handler = async (m, { conn, args }) => {
     return m.reply(`⛔ Non hai pacchetti *${packType.toUpperCase()}*. Usane o trovane uno.`);
   }
 
-  // Scala pacchetto
   data.packInventory[packType]--;
 
   await conn.sendMessage(m.chat, { text: '🎁 Aprendo il pacchetto...', mentions: [user] }, { quoted: m });
@@ -112,7 +111,6 @@ let handler = async (m, { conn, args }) => {
 
   let cards = [];
 
-  // Darkness ha carte predefinite
   if (packType === 'darkness') {
     for (let i = 0; i < 3; i++) {
       const card = JSON.parse(JSON.stringify(darknessPokemons[Math.floor(Math.random() * darknessPokemons.length)]));
@@ -124,7 +122,6 @@ let handler = async (m, { conn, args }) => {
     const cardPromises = rarities[packType].map(r => getRandomCardByRarity(r));
     cards = (await Promise.all(cardPromises)).filter(Boolean);
 
-    // Inizializza il contatore pity se non esiste
     data.pityCounter = data.pityCounter || 0;
     const chanceDarkness = Math.random() < 0.10;
     const pityTriggered = data.pityCounter >= 15;

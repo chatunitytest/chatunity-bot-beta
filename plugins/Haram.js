@@ -1,4 +1,4 @@
-⁸limport fetch from 'node-fetch';
+limport fetch from 'node-fetch';
 
 const API_KEY = '9746da2c-ac5f-487c-b4ae-fc55d1cd58b3';
 
